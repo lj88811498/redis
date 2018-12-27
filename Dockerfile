@@ -6,5 +6,4 @@ ARG requirepass=monkey
 EXPOSE 6379  
 
 
-
-
+ 
