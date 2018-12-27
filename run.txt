@@ -27,3 +27,6 @@ docker exec -it a126ec987cfe redis-cli -h 127.0.0.1 -p 6379 -a 'your passwd'
 OK
 127.0.0.1:6379> ping
 pong
+127.0.0.1:6379> info
+# Server
+redis_version:4.0.9
