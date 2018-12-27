@@ -1,3 +1,29 @@
 -- docker run --name some-redis -v /usr/local/redis:/data -d redis redis-server --appendonly yes
 
-docker run -d -p 6379:6379  -v /usr/local/redis/data:/data redis
+-- docker run -d -p 6379:6379  -v /usr/local/redis/data:/data redis
+
+-- docker run --name redis-test -p 6379:6379 -d --restart=always redis:latest redis-server --appendonly yes --requirepass "your passwd"
+
+挂载
+docker run -p 6379:6379 -d -v /usr/local/redis/data:/data --restart=always redis:latest redis-server --appendonly yes --requirepass "monkey"
+
+进入客户端
+docker exec -it 容器id redis-cli -a 'your passwd'
+
+完整
+docker exec -it a126ec987cfe redis-cli -h 127.0.0.1 -p 6379 -a 'your passwd'
+-h 127.0.0.1 :默认不加为-h 127.0.0.1 
+-p 6379 :默认不加为 -p 6379
+
+
+
+[root@localhost ~]# docker exec -it a126ec987cfe redis-cli
+127.0.0.1:6379> ping
+(error) NOAUTH Authentication required.
+
+
+//认证
+127.0.0.1:6379> auth 'your passwd'
+OK
+127.0.0.1:6379> ping
+pong
