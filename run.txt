@@ -30,3 +30,6 @@ pong
 127.0.0.1:6379> info
 # Server
 redis_version:4.0.9
+127.0.0.1:6379> set abc 123
+OK
+127.0.0.1:6379> get abc
